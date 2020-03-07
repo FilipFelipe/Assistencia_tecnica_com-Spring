@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/font-awesome/font-awesome.css}"></link>
+    <!-- IMPORTAÇÃO DO JAVASCRIPT -->
+    <script type="text/javascript" th:src="@{/js/bootstrap/bootstrap.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <title>Login - FF</title>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuario/login">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuario/novo">Cadastrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuario/list">Listar</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</head>
+<body>
+    <section class="container-fluid">
+      <center>
+
+     
+        <section id="top_formulario" class="col-12 col-sm-9 col-md-4">
+            <form id="forms">
+                <img id="foto" class="mb-4" src="https://img.icons8.com/dotty/80/000000/name.png" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+                <div class="form-group">
+                <label for="exampleInputEmail1">E-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Senha</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div id="check" class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Lembrar de mim </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                <p class="message"> <a href="#">Esqueceu sua senha?</a></p>
+                <p class="message">Não tem conta?<a href="cadastro"> Crie agora</a></p>
+                </div></div>
+            </form>
+        </section>
+      </center>
+    </section>
+    <p id="ano" class="mt-5 mb-3 text-muted">© 2017-2020</p>
+    
+</body>
+<script type="text/javascript" 
+            th:src="@{/js/jquery/jquery.js}"></script>
+    <script type="text/javascript" 
+            th:src="@{/js/bootstrap/bootstrap.js}"></script>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thmeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/font-awesome/css/font-awesome.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/font-awesome/css/font-awesome.min.css}"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <title>Cadastro de Usuário - FF</title>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario/login">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario/novo">Cadastrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario/list">Listar</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <section class="container-fluid">
+        <center>
+            <section id="top_formulario" class="col-12 col-sm-9 col-md-5">
+                <form id="forms" class="cadastro" th:object="${funcionario}" name="funcionario" method="POST">
+                    <img id="foto" class="mb-4" src="https://img.icons8.com/office/80/000000/parse-from-clipboard.png" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">Novo Funcionário</h1>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nome</label>
+                            <input type="text" name="nome" required th:field="*{nome}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" id="email" name="email" required th:field="*{email}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Senha</label>
+                            <input type="password" name="senha" required th:field="*{senha}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Senha</label>
+                            <input type="password" name="confirmasenha" required placeholder="Confirmar Senha" class="form-control" id="inputPassword4">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">CPF</label>
+                            <input type="text" name="cpf" onkeypress="$(this).mask('000.000.000-00');" class="form-control" required th:field="*{cpf}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="sexos">Sexo</label>
+                            <select name="sexo" th:field="*{sexo}" class="form-control">
+                      <option selected value="Masculino">Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Data de Nascimento</label>
+                            <input type="text" th:field="*{aniversario}" required onkeypress="$(this).mask('00/00/0000');" name="aniversario" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Telefone</label>
+                            <input type="text" th:field="*{telefone}" onkeypress="$(this).mask('(00)00000-0000');" required id="telefone" name="telefone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Cep</label>
+                            <input class="form-control" name="cep" required id="cep" th:field="*{cep}" placeholder="Buscar CEP" type="text" value="" onkeypress="$(this).mask('00000-000');" size="10" maxlength="9" onblur="pesquisacep(this.value)">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputCity">Rua</label>
+                            <input name="rua" id="rua" required th:field="*{rua}" type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <label for="inputZip">Número</label>
+                            <input type="text" name="numero" required th:field="*{numero}" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputState">Complemento</label>
+                            <select name="complemento" th:field="*{complemento}" class="form-control">
+                      <option selected value="Casa">Casa</option>
+                      <option value="Apartamento">Apartamento</option>
+                    </select>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputAddress">Bairro</label>
+                            <input name="Bairro" id="bairro" required th:field="*{bairro}" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputCity">Cidade</label>
+                            <input name="Cidade" id="cidade" required th:field="*{cidade}" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputState">Estado</label>
+                            <input name="Uf" id="uf" type="text" required th:field="*{uf}" size="2" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                        Manter conectado
+                      </label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                            </div>
+                        </div>
+                </form>
+                <p class="message">Já é cadastrado?<a th:href="@{/login}"> Login</a></p>
+            </section>
+        </center>
+    </section>
+    <p id="ano" class="mt-5 mb-3 text-muted">© 2017-2020</p>
+</body>
+<script type="text/javascript">function limpa_formulário_cep(){document.getElementById('rua').value=("");document.getElementById('bairro').value=("");document.getElementById('cidade').value=("");document.getElementById('uf').value=("")}function meu_callback(conteudo){if(!("erro"in conteudo)){document.getElementById('rua').value=(conteudo.logradouro);document.getElementById('bairro').value=(conteudo.bairro);document.getElementById('cidade').value=(conteudo.localidade);document.getElementById('uf').value=(conteudo.uf)}else{limpa_formulário_cep();alert("CEP não encontrado, Favor preencher manualmente!")}}function pesquisacep(valor){var cep=valor.replace(/\D/g,'');if(cep!=""){var validacep=/^[0-9]{8}$/;if(validacep.test(cep)){document.getElementById('rua').value="...";document.getElementById('bairro').value="...";document.getElementById('cidade').value="...";document.getElementById('uf').value="...";var script=document.createElement('script');script.src='https://viacep.com.br/ws/'+cep+'/json/?callback=meu_callback';document.body.appendChild(script)}else{limpa_formulário_cep();alert("Formato de CEP inválido.")}}else{limpa_formulário_cep()}};</script>
+<script type="text/javascript" th:src="@{/js/jquery/jquery-3.4.1.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery/jquery.mask.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery/email-autocomplete.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap/bootstrap.js}"></script>
+
+</html>
