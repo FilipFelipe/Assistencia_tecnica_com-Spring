@@ -7,5 +7,5 @@ import com.projeto.model.Usuario;
 public interface UsuarioService extends GenericService<Usuario, Long> {
 
 	Optional<Usuario> findUsuarioByEmail(String email);
-	Usuario findByEmail(String email);
 }
+

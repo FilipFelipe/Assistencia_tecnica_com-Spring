@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" 
+      type="text/css"  
+      th:href="@{/css/bootstrap/bootstrap.css}"></link>
+<link rel="stylesheet" 
+      type="text/css" 
+      th:href="@{/css/font-awesome/css/font-awesome.css}"></link>
+<title>Projeto</title>
+</head>
+<body>
+   <div class="container"> 
+    <h1 style="center">Cadastro de Usuários</h1>
+    <form th:action="${usuario.id == null} 
+                     ?@{/usuario/incluir}
+                     :@{/usuario/alterar}" 
+          method="POST" 
+          th:object="${usuario}">
+       
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12">
+             <div class="form-group"> 
+		       <label class="control-label">Nome:</label>
+		       <input type="text" 
+		              name="nome" 
+		              id="nome" 
+		              th:field="*{nome}"
+		              class="form-control"
+		              th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid'"/>
+		        <div class="invalid-feedback">
+		         	<span th:errors="*{nome}"></span>
+		      	</div>
+		      </div>
+       </div>
+       </div>
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12">
+             <div class="form-group"> 
+		       <label class="control-label">E-mail:</label>
+		       <input type="text" 
+		              name="email" 
+		              id="email" 
+		              th:field="*{email}"
+		              class="form-control"
+		              th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'"/>
+		        <div class="invalid-feedback">
+		          <span th:errors="*{email}"></span>
+		        </div>
+		      </div>
+          </div>
+       </div>        
+       <div class="row">
+         <div class="col-md-12">
+             <div class="form-group"> 
+      	       <label class="control-label">Senha:</label>
+			       <input type="password" 
+			              name="senha" 
+			              id="senha" 
+			              th:field="*{senha}"
+			              class="form-control"
+			              th:classappend="${#fields.hasErrors('senha')} ? 'is-invalid'"/>
+			       <div class="invalid-feedback">
+		         		<span th:errors="*{senha}"></span>
+		      	   </div>       
+			 </div>
+		  </div>	              
+       </div>
+      <div class="row">
+         <div class="col-md-12">
+             <div class="form-group"> 
+    	       <label class="control-label">Confirme Senha:</label>
+		       <input type="password" 
+		              name="confirmeSenha" 
+		              id="confirmeSenha" 
+		              th:field="*{confirmeSenha}"
+		              class="form-control"
+		              th:classappend="${#fields.hasErrors('confirmeSenha')} ? 'is-invalid'"/>
+		       <div class="invalid-feedback">
+		         <span th:errors="*{confirmeSenha}"></span>
+		       </div>        
+		    </div>
+		  </div>
+	   </div>	       
+	   <input type="hidden" th:field="*{id}">
+       <button type="submit" class="btn btn-primary">
+           Salvar
+       </button>
+    </form>
+   </div>
+    <script type="text/javascript" 
+            th:src="@{/js/jquery/jquery-3.4.1.js}"></script>
+    <script type="text/javascript" 
+            th:src="@{/js/bootstrap/bootstrap.js}"></script>
+</body>
+</html>

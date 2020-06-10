@@ -6,6 +6,7 @@ public class EmailCadastradoException extends NegocioException{
 
 	public EmailCadastradoException(String mensagem) {
 		super(mensagem);
+		
 	}
 
 }

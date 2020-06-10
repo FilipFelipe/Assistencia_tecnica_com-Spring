@@ -2,14 +2,13 @@ package com.projeto.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.projeto.model.Usuario;
 import com.projeto.repository.UsuarioRepository;
 import com.projeto.service.UsuarioService;
+import com.projeto.service.exceptions.EmailCadastradoException;
 
 @Service
 @Transactional
@@ -27,12 +26,21 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public Usuario save(Usuario entity) {
 		
+		Optional<Usuario> usuarioCadastrado = 
+				this.findUsuarioByEmail(entity.getEmail());
+		
+		if (usuarioCadastrado.isPresent() && !usuarioCadastrado.get().equals(entity)) {
+			throw new EmailCadastradoException(
+					String.format("O E-mail %s já está cadastrado no sistema ", entity.getEmail()));
+		}
+		
+		
 		return usuarioRepositoy.save(entity);
 	}
 
 	@Override
 	public Usuario update(Usuario entity) {
-		return usuarioRepositoy.
+		return this.save(entity);
 	}
 
 	@Override
@@ -53,14 +61,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 	
 	
-	public Optional<Usuario> findUsuarioByEmail(String email){
-		return null;
-	}
-
 	@Override
-	public Usuario findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Usuario> findUsuarioByEmail(String email){
+		return usuarioRepositoy.findUsuarioByEmail(email);
+				
 	}
 
 	

@@ -1,14 +1,12 @@
 package com.projeto.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TAB_FORNECEDOR")
@@ -24,7 +22,7 @@ public class Fornecedor implements Serializable{
 	private String nome_fantasia;
 	private String email;
 	private String cnpj;
-	private String contato;
+	private String contrato;
 	private String telefone;
 	private String bairro;
 	private String rua;
@@ -35,6 +33,7 @@ public class Fornecedor implements Serializable{
 	private String razao_social;
 	private String pais;
 	private String numero;
+	private String isAtivo;
 	
 	
 	
@@ -148,6 +147,67 @@ public class Fornecedor implements Serializable{
 	}
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	
+	
+	//-----------NOME_FANTASIA------------------
+	//Nome_FANTASIA
+	@Column(name = "NOME_FANTASIA")
+	public String getNome_fantasia() {
+		return nome_fantasia;
+	}
+	public void setNome_fantasia(String nome_fantasia) {
+		this.nome_fantasia = nome_fantasia;
+	}
+	
+	//-----------CNPJ------------------
+	//CNPJ
+	@Column(name = "CNPJ")
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	
+	//-----------CONTRATO---------------
+	//contrato
+	@Column(name = "CONTRATO")
+	public String getContrato() {
+		return contrato;
+	}
+	public void setContrato(String contrato) {
+		this.contrato = contrato;
+	}
+	
+	//-----------RAZAO_SOCIAL------------------
+	//RAZAO
+	@Column(name = "RAZAO_SOCIAL")
+	public String getRazao_social() {
+		return razao_social;
+	}
+	public void setRazao_social(String razao_social) {
+		this.razao_social = razao_social;
+	}
+	
+	//-----------PAIS------------------
+	//PAIS
+	@Column(name = "PAIS")
+	public String getPais() {
+		return pais;
+	}
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	
+	//-----------ATIVO------------------
+	//ATIVO
+	@Column(name = "ATIVO")
+	public String getIsAtivo() {
+		return isAtivo;
+	}
+	public void setIsAtivo(String isAtivo) {
+		this.isAtivo = isAtivo;
 	}
 	
 	
